@@ -83,7 +83,7 @@ var pokePic = $('<img>');
 
 $('input[name="choice"]').hide;
 
-// display question function
+
 function nextQuest(){
 
 	$('#questions').text(quiz[counter].question);
@@ -96,11 +96,11 @@ function nextQuest(){
 }
 
 
-// client-sided validation
+
 function validate() {
 	if ($('input').is(':checked')) {
 
-		nextQuest(); // display next question
+		nextQuest();
 	}
 	else {
 		alert("Please make a selection.");
@@ -108,15 +108,15 @@ function validate() {
 	}
 }
 
-// display first question
+
 nextQuest();
 
 
-// next button function
+
 $('#nextBtn').on('click', function() {
 	var answer = ($('input[name="choice"]:checked').val());
 
-	// increment score if answer is correct
+	
 	if (answer == quiz[counter].correct) {
 		numCorrect++;
 	}
@@ -124,30 +124,30 @@ $('#nextBtn').on('click', function() {
 	counter++;
 
 
-	// display score screen
+	
 	if (counter >= numQuestions) {
 		$('#main').hide().fadeIn("slow");
 		document.getElementById('main').innerHTML="Quiz Complete! You scored " + numCorrect + " out of " + numQuestions + "!";
-		return; // returns false *(there has to be a better way! figure it out.)*
+		return; 
 	}
 
 	validate();
 
-	// fade in new question
+	
 	$('.card').hide().fadeIn("slow");
 	
-	// clear previous selection
+	
 	$('input[name="choice"]').prop('checked', false);
 });
 
 
-// back button function
+
 $('#backBtn').on('click', function() {
 	if (quiz[counter] == 0) {
 		$('.card').hide().fadeIn("slow");
 
 	} else {
-		// fade out current question and fade in previous question
+		
 		$('.card').hide().fadeIn("slow");
 		numCorrect--;
 		counter--;
@@ -155,7 +155,7 @@ $('#backBtn').on('click', function() {
 
 	
 	
-	// display previous question
+	
 	nextQuest();	
 });
 
